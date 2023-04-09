@@ -1,0 +1,27 @@
+init_hour, init_min, final_hour, final_min = map(int, input().split())
+
+game_hours = 0
+game_min = 0
+
+#defining hours
+if init_hour == final_hour:
+    game_hours = 24
+elif init_hour < final_hour:
+    game_hours = final_hour - init_hour
+else:
+    game_hours = 24 - (init_hour - final_hour)
+
+#defining minutes
+if init_min == final_min:
+    game_min = 0
+elif init_min < final_min:
+    game_min = final_min - init_min
+else:
+    game_hours -= 1
+    game_min = 60 - (init_min - final_min)
+
+#special case: +24h
+if game_hours * 60 + game_min > 1440:
+    game_hours = 0
+
+print(f'O JOGO DUROU {game_hours} HORA(S) E {game_min} MINUTO(S)')
